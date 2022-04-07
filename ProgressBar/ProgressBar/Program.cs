@@ -12,20 +12,39 @@ namespace ProgressBar
 			Console.CursorVisible = false;
 
 			//first type
-			Random random = new Random();
-			int x = random.Next(1, 25);
-			int y = random.Next(200, 500);
+			StepsAndDelayGeneration(out int x, out int y);
+			PrintInfo(x, y);
+
+			//second type
+		}
+
+		#region printing
+
+		private static void PrintInfo(int x, int y)
+		{
 			for (int i = 0; i < x; i++)
 			{
 				Console.Write($"{i + 1}. step: ");
 				Thread.Sleep(y);
-				for (int j = 0; j < (i + 1); j++)
-					Console.Write("\u2593");
+				PrintProgressBar(i);
 
 				Console.Write($" {i + 1}/{x} steps\n");
 			}
+		}
 
-			//second type
+		private static void PrintProgressBar(int i)
+		{
+			for (int j = 0; j < (i + 1); j++)
+				Console.Write("\u2593");
+		}
+
+		#endregion
+
+		private static void StepsAndDelayGeneration(out int x, out int y)
+		{
+			Random random = new Random();
+			x = random.Next(1, 25);
+			y = random.Next(200, 500);
 		}
 	}
 }
