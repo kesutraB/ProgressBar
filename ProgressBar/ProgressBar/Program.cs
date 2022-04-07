@@ -20,13 +20,12 @@ namespace ProgressBar
 				Console.Write($"{i + 1}. step: ");
 				Thread.Sleep(y);
 				for (int j = 0; j < (i + 1); j++)
-				{
 					Console.Write("\u2593");
-				}
-				Console.Write($" {i + 1}/{x} steps\n");
 
-				//second type
+				Console.Write($" {i + 1}/{x} steps\n");
 			}
+
+			//second type
 		}
 	}
 }
