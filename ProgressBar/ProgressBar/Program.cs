@@ -20,8 +20,8 @@ namespace ProgressBar
 			Console.CursorVisible = false;
 
 			//first type
-			//ProgressBarTypeOne();
-			Console.WriteLine();
+			ProgressBarTypeOne();
+			Console.WriteLine("\n");
 
 			//second type
 			ProgressBarTypeTwo();
@@ -32,32 +32,28 @@ namespace ProgressBar
 		{
 			RandomSteps(out int x);
 			RandomDelay(out int y);
-			PrintInfo(x, y);
+			PrintInfoOne(x, y);
 		}
 
 		private static void ProgressBarTypeTwo()
 		{
 			PrintCharacter(steps, divone);
-			for (int i = 0; i < steps; i++)
-			{
-				Console.CursorLeft = steps + 1;
-				PrintSteps(i, steps);
-			}
+			PrintInfoTwo();
 		}
 
 		#region ProgressBar type one
 
-		private static void PrintInfo(int x, int y)
+		private static void PrintInfoOne(int x, int y)
 		{
 			for (int i = 0; i < x; i++)
 			{
-				PrintProgressBar(i);
+				PrintProgressBarOne(i);
 				PrintSteps(i, x);
 				Thread.Sleep(y);
 			}
 		}
 
-		private static void PrintProgressBar(int i)
+		private static void PrintProgressBarOne(int i)
 		{
 			Console.CursorLeft = i;
 			Console.Write(divthree);
@@ -75,6 +71,32 @@ namespace ProgressBar
 			y = random.Next(MaxY);
 		}
 
+		#endregion
+
+		#region ProgressBar type two
+		
+		private static void PrintInfoTwo()
+		{
+			for (int i = 0; i < steps; i++)
+			{
+				Console.CursorLeft = steps + 1;
+				PrintSteps(i, steps);
+				Console.CursorLeft = i;
+				PrintProgressBarTwo(i);
+			}
+		}
+
+		private static void PrintProgressBarTwo(int i)
+		{
+			for (int j = 0; j < 2; j++)
+			{
+				if (j == 0)
+					Console.Write(divthree);
+				if (j == 1 && i != steps - 1)
+					Console.Write(divtwo);
+				Thread.Sleep(delay);
+			}
+		}
 		#endregion
 
 		#region UniversalPrinting
