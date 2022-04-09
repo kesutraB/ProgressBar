@@ -66,6 +66,7 @@ namespace ProgressBar
 					PrintProgressBarOne(i);
 				}
 				Console.ResetColor();
+				Console.Write(" ");
 				PrintSteps(i, x);
 				Thread.Sleep(y);
 			}
