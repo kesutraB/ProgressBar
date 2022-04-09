@@ -30,8 +30,9 @@ namespace ProgressBar
 
 		private static void ProgressBarTypeOne()
 		{
-			RandomSteps(out int x);
-			RandomDelay(out int y);
+			int x, y;
+			RNG(out x,MaxX);
+			RNG(out y, MaxY);
 			PrintInfoOne(x, y);
 		}
 
@@ -59,16 +60,10 @@ namespace ProgressBar
 			Console.Write(divthree);
 		}
 
-		private static void RandomSteps(out int x)
+		private static void RNG(out int rnd, int value)
 		{
 			Random random = new Random();
-			x = random.Next(MaxX);
-		}
-
-		private static void RandomDelay(out int y)
-		{
-			Random random = new Random();
-			y = random.Next(MaxY);
+			rnd = random.Next(value);
 		}
 
 		#endregion
