@@ -34,12 +34,14 @@ namespace ProgressBar
 			RNG(out x,MaxX);
 			RNG(out y, MaxY);
 			PrintInfoOne(x, y);
+			Console.Write("\nCompleted.");
 		}
 
 		private static void ProgressBarTypeTwo()
 		{
 			PrintCharacter(steps, divone);
 			PrintInfoTwo();
+			Console.Write("\nCompleted.");
 		}
 
 		#region ProgressBar type one
@@ -48,7 +50,22 @@ namespace ProgressBar
 		{
 			for (int i = 0; i < x; i++)
 			{
-				PrintProgressBarOne(i);
+				if (i < x / 3)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					PrintProgressBarOne(i);
+				}
+				else if (i < (x / 3) * 2)
+				{
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					PrintProgressBarOne(i);
+				}
+				else if (i < x)
+				{
+					Console.ForegroundColor = ConsoleColor.Green;
+					PrintProgressBarOne(i);
+				}
+				Console.ResetColor();
 				PrintSteps(i, x);
 				Thread.Sleep(y);
 			}
@@ -77,7 +94,22 @@ namespace ProgressBar
 				Console.CursorLeft = steps + 1;
 				PrintSteps(i, steps);
 				Console.CursorLeft = i;
-				PrintProgressBarTwo(i);
+				if (i < steps / 3)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					PrintProgressBarTwo(i);
+				}
+				else if (i < (steps / 3) * 2)
+				{
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					PrintProgressBarTwo(i);
+				}
+				else if (i < steps)
+				{
+					Console.ForegroundColor = ConsoleColor.Green;
+					PrintProgressBarTwo(i);
+				}
+				Console.ResetColor();
 			}
 		}
 
